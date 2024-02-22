@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import AddBookModal from './AddBookModal';
-import AddAnimalModal from './AddAnimalModal';
+import AddBookModal from './modals/AddBookModal';
+import AddAnimalModal from './modals/addAnimalModal';
 
-const Three = ({ allBooks, allAnimals, setBook, setAnimal }) => {
+const AddContent = ({ allBooks, allAnimals, setBook, setAnimal }) => {
     const [isBookModalOpen, setIsBookModalOpen] = useState(false);
     const [isAnimalModalOpen, setIsAnimalModalOpen] = useState(false);
 
@@ -29,7 +29,7 @@ const Three = ({ allBooks, allAnimals, setBook, setAnimal }) => {
                 allAnimals={allAnimals}
             />
             <div className="p-4 w-full">
-                <h1 className="text-3xl font-bold mb-4">Add Books or Animals</h1>
+                <h1 className="text-3xl font-semibold mb-4 text-[#4D8FAC]">Add Books or Animals</h1>
                 <div className="flex flex-col gap-4 w-full">
                     <div className="flex gap-4 items-center justify-between">
                         <div className="text-xl font-semibold">Add New Book To The List</div>
@@ -54,4 +54,4 @@ const Three = ({ allBooks, allAnimals, setBook, setAnimal }) => {
     );
 };
 
-export default Three;
+export default AddContent;

@@ -3,7 +3,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import toast, { Toaster } from 'react-hot-toast';
 import { addAnimal } from '@/api/api'; 
 
-
 export default function AddAnimalModal({ open, setOpen, setAnimals, allAnimals }) {
     const [formData, setFormData] = useState({
         name: '',
@@ -31,6 +30,15 @@ export default function AddAnimalModal({ open, setOpen, setAnimals, allAnimals }
     };
 
     const handleAddAnimal = async () => {
+        // Check if any field is empty
+        const emptyFields = Object.entries(formData).filter(([key, value]) => value === '').map(([key, value]) => key);
+
+        if (emptyFields.length > 0) {
+            const errorMessage = `Please fill in the following fields: ${emptyFields.join(', ')}`;
+            toast.error(errorMessage);
+            return;
+        }
+
         const newAnimal = await addAnimal(formData); 
         if (newAnimal) {
             setOpen(false);
@@ -40,6 +48,7 @@ export default function AddAnimalModal({ open, setOpen, setAnimals, allAnimals }
             toast.error('Oops some error occurred');
         }
     };
+
     return (
         <>
             <Toaster />

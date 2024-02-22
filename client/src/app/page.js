@@ -1,5 +1,5 @@
 "use server"
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/Sidebar/Sidebar";
 import HomeContainer from "@/components/Home";
 import { getAllBooks , getAllAnimals } from "@/api/api";
 

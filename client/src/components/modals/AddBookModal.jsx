@@ -3,7 +3,6 @@ import { Dialog, Transition } from "@headlessui/react";
 import toast, { Toaster } from "react-hot-toast";
 import { addBook } from "@/api/api"; 
 
-
 export default function AddBookModal({ open, setOpen, setBooks, allBooks }) {
   const [formData, setFormData] = useState({
     title: "",
@@ -31,6 +30,15 @@ export default function AddBookModal({ open, setOpen, setBooks, allBooks }) {
   };
 
   const handleAddBook = async () => {
+    // Check if any field is empty
+    const emptyFields = Object.entries(formData).filter(([key, value]) => value === '').map(([key, value]) => key);
+
+    if (emptyFields.length > 0) {
+      const errorMessage = `Please fill in the following fields: ${emptyFields.join(', ')}`;
+      toast.error(errorMessage);
+      return;
+    }
+
     const newBook = await addBook(formData); 
     if (newBook) {
       setOpen(false);

@@ -1,9 +1,9 @@
 "use client"
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
-import One from "@/components/One";
-import Two from "@/components/Two";
-import Three from "@/components/Three";
-import Header from "./Header";
+import Book from "./Book";
+import Animal from "./Animal";
+import AddContent from "./AddContent";
+import Header from "./Header/Header";
 import { useState, useEffect } from "react";
 import { updateAnimal } from "@/api/api";
 
@@ -28,18 +28,18 @@ const HomeContainer = ({ allBooks, allAnimals }) => {
                     <Panel defaultSizePercentage={50}>
                         <PanelGroup autoSaveId="example2" direction="horizontal">
                             <Panel className="border-r-4 border-black" defaultSizePercentage={50}>
-                                <One allBooks={allBooksArray} setAllBooksArray={setAllBooksArray} />
+                                <Book allBooks={allBooksArray} setAllBooksArray={setAllBooksArray} />
                             </Panel>
                             <PanelResizeHandle className="border-r-2 border-black" />
                             <Panel defaultSizePercentage={50}>
-                                <Two allAnimals={allAnimalsArray} setAllAnimalsArray={setAllAnimalsArray} />
+                                <Animal allAnimals={allAnimalsArray} setAllAnimalsArray={setAllAnimalsArray} />
                             </Panel>
                         </PanelGroup>
                         
                     </Panel>
                     <PanelResizeHandle className="border-b-2 border-black" />
                     <Panel defaultSizePercentage={50}>
-                        <Three allBooks={allBooksArray} allAnimals={allAnimalsArray} setBook={setAllBooksArray} setAnimal={setAllAnimalsArray} />
+                        <AddContent allBooks={allBooksArray} allAnimals={allAnimalsArray} setBook={setAllBooksArray} setAnimal={setAllAnimalsArray} />
                     </Panel>
                   
                 </PanelGroup>
