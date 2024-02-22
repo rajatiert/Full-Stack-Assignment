@@ -20,37 +20,28 @@ const HomeContainer = ({ allBooks, allAnimals }) => {
         setAllAnimalsArray(allAnimals);
     }, [allAnimals])
 
-  
-
     return (
-        <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-col gap-6 ">
+        <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-col gap-4 ">
             <Header />
             <div className="flex flex-col w-full h-screen border-[1px] border-[#CFCFCF] rounded-lg ">
                 <PanelGroup className="" autoSaveId="example" direction="vertical">
-
-                    <Panel defaultsizepercentage={50}>
+                    <Panel defaultSizePercentage={50}>
                         <PanelGroup autoSaveId="example2" direction="horizontal">
-
-
-                            <Panel className="border-r-4 border-black" defaultsizepercentage={50}>
-                                <One allBooks={allBooksArray} setAllBooksArray = {setAllBooksArray} />
+                            <Panel className="border-r-4 border-black" defaultSizePercentage={50}>
+                                <One allBooks={allBooksArray} setAllBooksArray={setAllBooksArray} />
                             </Panel>
-                            <PanelResizeHandle />
-
-
-                            <Panel defaultsizepercentage={50}>
-                                <Two allAnimals={allAnimalsArray} setAllAnimalsArray = {setAllAnimalsArray}/>
+                            <PanelResizeHandle className="border-r-2 border-black" />
+                            <Panel defaultSizePercentage={50}>
+                                <Two allAnimals={allAnimalsArray} setAllAnimalsArray={setAllAnimalsArray} />
                             </Panel>
                         </PanelGroup>
+                        
                     </Panel>
-                    <PanelResizeHandle />
-
-
-                    <Panel className="border-t p-4 border-black w-full h-2" defaultsizepercentage={50}>
-
-                        <Three allBooks = {allBooksArray} allAnimals = {allAnimalsArray} setBook={setAllBooksArray} setAnimal = {setAllAnimalsArray} />
+                    <PanelResizeHandle className="border-b-2 border-black" />
+                    <Panel defaultSizePercentage={50}>
+                        <Three allBooks={allBooksArray} allAnimals={allAnimalsArray} setBook={setAllBooksArray} setAnimal={setAllAnimalsArray} />
                     </Panel>
-                    <PanelResizeHandle />
+                  
                 </PanelGroup>
             </div>
         </div>

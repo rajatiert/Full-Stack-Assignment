@@ -9,22 +9,15 @@ const One = ({ allBooks, setAllBooksArray }) => {
 
     return (
         <>
-            <EditBookModal
-                open={openEditBookModal}
-                setOpen={setOpenEditBookModal}
-                book={selectedBook}
-                setBook={setAllBooksArray}
-                allBooks={allBooks}
-            />
-          
-            <div className="flex flex-col gap-4 w-full p-4 pl-4">
-                <div className="flex justify-between items-center mb-4">
-                    <h1 className="text-2xl font-medium w-full">Favorite Books</h1>
-                   
-                </div>
+         
+
+            <div className="flex flex-col gap-4 w-full p-4 ">
+
+                <h1 className="text-2xl font-medium w-full">Favorite Books</h1>
+
                 <div className="grid grid-cols-2 gap-4 overflow-auto">
                     {allBooks.map((book, index) => (
-                        <div key={index} className="border p-4">
+                        <div key={index} className="border px-4 py-2 shadow-lg rounded-lg">
                             <div className="flex justify-between">
                                 <h2 className="text-lg font-medium">{book?.title}</h2>
                                 <div onClick={() => {
@@ -41,6 +34,13 @@ const One = ({ allBooks, setAllBooksArray }) => {
                     ))}
                 </div>
             </div>
+            <EditBookModal
+                open={openEditBookModal}
+                setOpen={setOpenEditBookModal}
+                book={selectedBook}
+                setBook={setAllBooksArray}
+                allBooks={allBooks}
+            />
         </>
     );
 }
