@@ -183,3 +183,23 @@ export const addAnimal = async (animalData)=>{
 
 
 }
+
+export const getApiCalls = async () => {
+  const url = `${apiBaseUrl}/getCount`;
+
+  try {
+      const response = await fetch(url,{cache:"no-store"});
+
+      if (response.ok) {
+          const data = await response.json();
+          console.log("response = ", data);
+          return data;
+      } else {
+          console.error("Error fetching books. Status:", response.status);
+          return null;
+      }
+  } catch (error) {
+      console.error("Error fetching books:", error);
+      throw error; 
+  }
+}

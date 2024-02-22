@@ -5,20 +5,36 @@ import Animal from "./Animal";
 import AddContent from "./AddContent";
 import Header from "./Header/Header";
 import { useState, useEffect } from "react";
-import { updateAnimal } from "@/api/api";
+import {  getAllAnimals , getAllBooks , getApiCalls} from "@/api/api";
 
-const HomeContainer = ({ allBooks, allAnimals }) => {
+const fetchData = async (setAllBooksArray,setAllAnimalsArray )=>{
+
+    const allBooks = await getAllBooks();
+    setAllBooksArray(allBooks)
+    const allAnimals = await getAllAnimals();
+    setAllAnimalsArray(allAnimals)
+  
+
+}
+
+const fetchApiCount = async (setApiCalls)=>{
+    const count  = await getApiCalls();
+    setApiCalls(count);
+}
+
+const HomeContainer = ({  }) => {
 
     const [allBooksArray, setAllBooksArray] = useState([]);
     const [allAnimalsArray, setAllAnimalsArray] = useState([]);
+    const [apiCall , setApiCalls] = useState(null);
 
-    useEffect(() => {
-        setAllBooksArray(allBooks);
-    }, [allBooks])
+    useEffect(()=>{
+      fetchData(setAllBooksArray, setAllAnimalsArray);
+    },[])
 
-    useEffect(() => {
-        setAllAnimalsArray(allAnimals);
-    }, [allAnimals])
+    useEffect(()=>{
+        fetchApiCount(setApiCalls);
+    },[allAnimalsArray , allBooksArray])
 
     return (
         <div className="w-full px-4 sm:px-6 lg:px-8 flex flex-col gap-4 ">
@@ -39,7 +55,7 @@ const HomeContainer = ({ allBooks, allAnimals }) => {
                     </Panel>
                     <PanelResizeHandle className="border-b-2 border-black" />
                     <Panel defaultSizePercentage={50}>
-                        <AddContent allBooks={allBooksArray} allAnimals={allAnimalsArray} setBook={setAllBooksArray} setAnimal={setAllAnimalsArray} />
+                        <AddContent allBooks={allBooksArray} allAnimals={allAnimalsArray} setBook={setAllBooksArray} setAnimal={setAllAnimalsArray} apiCall = {apiCall} />
                     </Panel>
                   
                 </PanelGroup>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AddBookModal from './modals/AddBookModal';
 import AddAnimalModal from './modals/addAnimalModal';
 
-const AddContent = ({ allBooks, allAnimals, setBook, setAnimal }) => {
+const AddContent = ({ allBooks, allAnimals, setBook, setAnimal ,apiCall}) => {
     const [isBookModalOpen, setIsBookModalOpen] = useState(false);
     const [isAnimalModalOpen, setIsAnimalModalOpen] = useState(false);
 
@@ -46,6 +46,23 @@ const AddContent = ({ allBooks, allAnimals, setBook, setAnimal }) => {
                             <button onClick={openAnimalModal} className="bg-black text-white px-3 py-2 rounded-lg">
                                 Add Animal
                             </button>
+                        </div>
+                    </div>
+                    <div className="flex gap-4 items-center justify-between">
+                        <div className="text-xl font-semibold">Add api called </div>
+                        <div>
+                            <div className="bg-black text-white px-3 py-2 rounded-lg">
+                                {apiCall?.add} Times
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-4 items-center justify-between">
+                        <div className="text-xl font-semibold">Update api called </div>
+                        <div>
+                            <div className="bg-black text-white px-3 py-2 rounded-lg">
+                                {apiCall?.update} Times
+                            </div>
                         </div>
                     </div>
                 </div>

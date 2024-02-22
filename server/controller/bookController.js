@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 import Book from "../models/dataModal.js";
+import Count from "../models/count.js";
 
 export const addBook = async (req, res) => {
     try {
+        const count = await Count.findOne({ name: "Add" }); 
+      
+        const updatedCount = await Count.findByIdAndUpdate(count._id, { $inc: { count: 1 } }, { new: true });
 
         const bookData = req.body || null;
         console.log(" req is made to add book", bookData);
@@ -37,6 +41,10 @@ export const getBooks = async (req, res) => {
 export const updateBook = async (req, res) => {
 
     try {
+
+        const count = await Count.findOne({ name: "Update" }); 
+      
+        const updatedCount = await Count.findByIdAndUpdate(count._id, { $inc: { count: 1 } }, { new: true });
 
         const book = req.body || null;
         if (!book?._id) {

@@ -1,12 +1,10 @@
-"use server"
+
 import Sidebar from "@/components/Sidebar/Sidebar";
 import HomeContainer from "@/components/Home";
 import { getAllBooks , getAllAnimals } from "@/api/api";
 
-export default async function Home() {
+export default  function Home() {
 
-  const allBooks = await getAllBooks();
-  const allAnimals = await getAllAnimals();
 
   return (
     <div className="flex gap-2">
@@ -14,7 +12,7 @@ export default async function Home() {
         <Sidebar/>
       </div>
       <div className=" flex flex-col w-full h-screen ">
-        <HomeContainer allBooks = {allBooks} allAnimals = {allAnimals} />
+        <HomeContainer  />
       </div>
     </div>
   );
