@@ -18,7 +18,7 @@ const AddContent = ({ allBooks, allAnimals, setBook, setAnimal ,apiCall}) => {
         <> <AddBookModal
             open={isBookModalOpen}
             setOpen={setIsBookModalOpen}
-            setBook={setBook}
+            setBooks={setBook}
             allBooks={allBooks}
         />
  
